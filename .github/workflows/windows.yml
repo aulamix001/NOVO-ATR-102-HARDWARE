@@ -1,0 +1,51 @@
+name: Windows build
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+      - name: Build
+        run: cmake --build build --config Release --target ReelGlue_VST3 ReelGlue_Standalone ReelGlueTests --parallel 3
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
+      - name: Build official VST3 validator
+        shell: pwsh
+        run: |
+          git clone --depth 1 --branch v3.8.1_build_84 https://github.com/steinbergmedia/vst3sdk.git validator-sdk
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git -C validator-sdk submodule update --init --depth 1 base cmake pluginterfaces public.sdk
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake -S validator-sdk -B validator-build -G "Visual Studio 17 2022" -A x64 -DSMTG_ENABLE_VST3_HOSTING_EXAMPLES=OFF -DSMTG_ENABLE_VST3_PLUGIN_EXAMPLES=OFF -DSMTG_ENABLE_VSTGUI_SUPPORT=OFF
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build validator-build --config Release --target validator --parallel 3
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Validate VST3
+        shell: pwsh
+        run: |
+          curl.exe -fL https://github.com/Tracktion/pluginval/releases/download/v1.0.4/pluginval_Windows.zip -o pluginval.zip
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Expand-Archive pluginval.zip -DestinationPath pluginval
+          $validator = (Resolve-Path "validator-build/bin/Release/validator.exe").Path
+          $plugin = (Resolve-Path "build/ReelGlue_artefacts/Release/VST3/ReelGlue.vst3").Path
+          $pluginval = (Get-ChildItem pluginval -Recurse -Filter pluginval.exe | Select-Object -First 1).FullName
+          & $validator $plugin
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $pluginval --strictness-level 5 --vst3validator $validator --validate $plugin
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Build installer
+        shell: pwsh
+        run: |
+          $version = (Select-String -Path CMakeLists.txt -Pattern 'project\(ReelGlue VERSION ([0-9.]+)').Matches.Groups[1].Value
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "/DAppVersion=$version" Installer/ReelGlue.iss
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ReelGlue-Windows-x64-development
+          path: |
+            build/ReelGlue_artefacts/Release/VST3/ReelGlue.vst3
+            out/*.exe
