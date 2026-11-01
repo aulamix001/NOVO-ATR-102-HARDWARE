@@ -1,8 +1,8 @@
-# ReelGlue
+# ATR-102
 
 A native, vector-drawn stereo tape plugin for VST3 hosts, with a standalone development application. The hardware interface features machined reel flanges, visible tape windings, moving analog meters, layered metal finishes, walnut cheeks, illuminated keys, and an opening calibration panel. No bitmap artwork, webview, or external assets are needed at runtime.
 
-![ReelGlue native hardware interface](docs/screenshots/reelglue.png)
+![ATR-102 native hardware interface](docs/screenshots/atr-102.png)
 
 ## Build
 
@@ -23,6 +23,8 @@ ctest --test-dir build --output-on-failure
 ```
 
 The VST3 bundle is produced under `build/ReelGlue_artefacts/Release/VST3/` on multi-configuration generators; the standalone application is in the sibling `Standalone/` directory.
+
+The displayed product, host name and installable bundle are named **ATR-102**. Internal CMake targets and saved-state IDs retain their original names for compatibility.
 
 ## Controls
 

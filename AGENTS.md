@@ -229,3 +229,7 @@ At the end of each milestone print a short report: what was done, test results, 
 - Zölzer (ed.), "DAFX: Digital Audio Effects" (fractional delay, oversampling); Välimäki & Laakso on Lagrange/Hermite interpolation.
 - Steinberg VST3 documentation and JUCE docs/tutorials (parameters, state, oversampling).
 - Operational reference for behaviour: the publicly available manual of Universal Audio's Ampex ATR-102 plug-in (help.uaudio.com) and the scanned Ampex ATR-100/101/102/104 user & maintenance manual (vintagedigital.com.au) — behavioural reference only, d
+
+## Latest user direction (2026-11-01)
+
+The user explicitly changed the product and displayed name to **ATR-102** and requested more realistic knobs and buttons. This supersedes the earlier ReelGlue naming restriction in section 1. Retain existing internal parameter IDs, processor/state identifiers and build target names for compatibility. Use ATR-102 for the visible GUI, host product name, bundle and installer.

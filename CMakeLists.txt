@@ -9,7 +9,7 @@ FetchContent_Declare(Catch2 GIT_REPOSITORY https://github.com/catchorg/Catch2.gi
 FetchContent_MakeAvailable(JUCE Catch2)
 juce_add_plugin(ReelGlue
     COMPANY_NAME "ReelGlue Audio" BUNDLE_ID "audio.reelglue.plugin" PLUGIN_MANUFACTURER_CODE Rglu PLUGIN_CODE RgL1
-    FORMATS VST3 Standalone PRODUCT_NAME "ReelGlue"
+    FORMATS VST3 Standalone PRODUCT_NAME "ATR-102"
     VST3_CATEGORIES Fx Dynamics IS_SYNTH FALSE NEEDS_MIDI_INPUT FALSE
     NEEDS_MIDI_OUTPUT FALSE COPY_PLUGIN_AFTER_BUILD FALSE)
 juce_generate_juce_header(ReelGlue)

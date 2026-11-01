@@ -125,7 +125,7 @@ void ReelGlueEditor::reel(juce::Graphics& g,float cx,float cy,float radius,float
     g.setColour(colour(0xff8a8988).withAlpha(0.55f));g.drawEllipse(hb.reduced(2),0.8f);
     g.setGradientFill(juce::ColourGradient(colour(0xff4f4e4d),cx-hub*0.6f,cy-hub,colour(0xff100f0e),cx+hub*0.3f,cy+hub,false));g.fillEllipse(hb.reduced(8));screw(g,cx,cy,4);
     for(int i=0;i<3;++i){const auto a=angle+(i*2+1)*juce::MathConstants<float>::pi/3;const auto x=cx+std::sin(a)*radius*0.34f,y=cy-std::cos(a)*radius*0.34f;screw(g,x,y,3);}
-    juce::Graphics::ScopedSaveState save(g);g.addTransform(juce::AffineTransform::rotation(angle,cx,cy));text(g,right?"PRECISION REEL  /  10.5\"":"R G  /  STUDIO SERIES",{cx-80,cy+radius*0.58f,160,14},9,colour(0xff656463));
+    juce::Graphics::ScopedSaveState save(g);g.addTransform(juce::AffineTransform::rotation(angle,cx,cy));text(g,right?"PRECISION REEL  /  10.5\"":"ATR-102 / STUDIO SERIES",{cx-80,cy+radius*0.58f,160,14},9,colour(0xff656463));
 }
 void ReelGlueEditor::deck(juce::Graphics& g) {
     auto face=juce::Rectangle<float>(25,265,850,725);
@@ -138,7 +138,7 @@ void ReelGlueEditor::deck(juce::Graphics& g) {
     g.setColour(colour(0xff0b0a09));g.strokePath(tape,juce::PathStrokeType(7));g.setColour(colour(0xff6b4630));g.strokePath(tape,juce::PathStrokeType(3));g.setColour(colour(0xff98734a).withAlpha(0.4f));g.strokePath(tape,juce::PathStrokeType(0.6f));
     // Head block, capstan bridge, and precision rollers.
     juce::Path cover;cover.startNewSubPath(247,708);cover.lineTo(651,708);cover.lineTo(680,797);cover.quadraticTo(684,819,662,841);cover.lineTo(576,923);cover.lineTo(349,923);cover.lineTo(245,837);cover.quadraticTo(224,815,230,782);cover.closeSubPath();
-    juce::DropShadow(juce::Colours::black.withAlpha(0.9f),9,{0,7}).drawForPath(g,cover);gradient(g,{240,710,430,210},colour(0xff4f4e4d),colour(0xff2a2928));g.setColour(colour(0xff242322));g.fillPath(cover);
+    juce::DropShadow(juce::Colours::black.withAlpha(0.9f),9,{0,7}).drawForPath(g,cover);g.setColour(colour(0xff242322));g.fillPath(cover);
     g.setGradientFill(juce::ColourGradient(colour(0xff4d4c4b),300,710,colour(0xff2b2a29),580,920,false));g.fillPath(cover);g.setColour(colour(0xff787776).withAlpha(0.45f));g.strokePath(cover,juce::PathStrokeType(1.2f));
     gradient(g,{324,920,278,14},colour(0xffcac9c8),colour(0xff605f5e));
     for(float x:{294.f,606.f}){g.setColour(colour(0xff151413));g.fillEllipse(x-29,676,58,61);g.setGradientFill(juce::ColourGradient(colour(0xfff1eed9),x-18,680,colour(0xff959493),x+20,727,false));g.fillEllipse(x-20,682,40,45);screw(g,x,707,8);g.setColour(colour(0xff797877));g.drawEllipse(x-23,679,46,51,1);}
@@ -148,9 +148,9 @@ void ReelGlueEditor::deck(juce::Graphics& g) {
     for(float x:{265.f,637.f})screw(g,x,741,4);
     text(g,"30",{483,675,23,12},10,muted);text(g,"15",{479,690,23,12},10,amber);text(g,"7.5",{476,705,26,12},10,muted);text(g,"3.75",{475,720,26,12},9,muted);
     text(g,"IPS",{522,744,33,12},9,muted);text(g,"TWO-TRACK MASTERING RECORDER",{300,868,280,14},9,colour(0xff828180));
-    text(g,"R E E L G L U E",{296,817,250,35},25,colour(0xffa2a1a0),juce::Justification::centred,true);
+    text(g,"A T R - 1 0 2",{296,817,250,35},25,colour(0xffa2a1a0),juce::Justification::centred,true);
     // Illuminated enamel control panels.
-    for(float x:{50.f,687.f}){juce::DropShadow(juce::Colours::black.withAlpha(0.8f),6,{2,4}).drawForRectangle(g,juce::Rectangle<int>(static_cast<int>(x),648,166,326));gradient(g,{x,648,166,326},colour(0xffeeeddf),colour(0xffbbbab9),true);g.setColour(colour(0xff474645));g.drawRoundedRectangle({x+5,653,156,315},3,2);gradient(g,{x+9,656,148,24},colour(0xffe9e8e7),colour(0xffb9b8b7));text(g,"REELGLUE",{x+8,655,150,25},20,colour(0xff3a3938),juce::Justification::centred,true);screw(g,x+13,960,3);screw(g,x+153,960,3);}
+    for(float x:{50.f,687.f}){juce::DropShadow(juce::Colours::black.withAlpha(0.8f),6,{2,4}).drawForRectangle(g,juce::Rectangle<int>(static_cast<int>(x),648,166,326));gradient(g,{x,648,166,326},colour(0xffeeeddf),colour(0xffbbbab9),true);g.setColour(colour(0xff474645));g.drawRoundedRectangle({x+5,653,156,315},3,2);gradient(g,{x+9,656,148,24},colour(0xffe9e8e7),colour(0xffb9b8b7));text(g,"ATR-102",{x+8,655,150,25},20,colour(0xff3a3938),juce::Justification::centred,true);screw(g,x+13,960,3);screw(g,x+153,960,3);}
     gradient(g,{60,853,146,17},colour(0xff4a4948),colour(0xff373635));text(g,"EMPHASIS EQ",{60,853,146,17},9,cream);
     led(g,94,908,processor.value("speed")<2.5f&&processor.value("emphasis")<0.5f);text(g,"NAB",{71,882,48,14},10,colour(0xff484746));
     text(g,"TAPE",{698,698,49,19},9,colour(0xff565554));text(g,"CAL",{749,698,49,19},9,colour(0xff565554));text(g,"HEAD",{800,698,49,19},9,colour(0xff565554));
@@ -174,8 +174,8 @@ void ReelGlueEditor::paint(juce::Graphics& g){
     for(float x:{0.f,878.f}){gradient(g,{x,0,22,H},colour(0xff71472b),colour(0xff2f1d12),true);for(int i=0;i<190;++i){g.setColour(colour(i%3==0?0xffaf7845:0xff21140e).withAlpha(0.23f));g.drawLine(x+2,static_cast<float>(i*7),x+20,static_cast<float>(i*7+9),static_cast<float>(i%2+1));}}
     auto chassis=juce::Rectangle<float>(20,12,860,1042);g.setColour(colour(0xff0b0a09));g.fillRoundedRectangle(chassis,7);
     gradient(g,{23,15,854,80},colour(0xff646362),colour(0xff2b2a29));g.setColour(colour(0xff9a9998));g.drawHorizontalLine(16,28,872);g.setColour(colour(0xff171615));g.drawHorizontalLine(94,23,877);
-    text(g,"REELGLUE",{42,29,227,28},29,cream,juce::Justification::centredLeft,true);text(g,"PRECISION TAPE MACHINE",{44,63,222,14},9,muted,juce::Justification::centredLeft);
-    text(g,"FACTORY PRESET",{326,20,231,14},8,muted,juce::Justification::centredLeft);text(g,"RG-02",{731,32,100,22},20,cream,juce::Justification::centredRight,true);text(g,"STEREO  /  MASTERING",{655,62,178,13},9,muted,juce::Justification::centredRight);led(g,849,48,processor.value("power")>0.5f);
+    text(g,"ATR-102",{42,29,227,28},29,cream,juce::Justification::centredLeft,true);text(g,"PRECISION TAPE MACHINE",{44,63,222,14},9,muted,juce::Justification::centredLeft);
+    text(g,"FACTORY PRESET",{326,20,231,14},8,muted,juce::Justification::centredLeft);text(g,"2-TRACK",{731,32,100,22},20,cream,juce::Justification::centredRight,true);text(g,"STEREO  /  MASTERING",{655,62,178,13},9,muted,juce::Justification::centredRight);led(g,849,48,processor.value("power")>0.5f);
     deck(g);
     // Meter bridge casts a shadow over the reel flanges.
     juce::DropShadow(juce::Colours::black.withAlpha(0.85f),8,{0,7}).drawForRectangle(g,{21,102,858,160});gradient(g,{22,101,856,160},colour(0xffcdcccb),colour(0xff787776));
@@ -187,5 +187,5 @@ void ReelGlueEditor::paint(juce::Graphics& g){
     text(g,"ANALOG CHARACTER. PRECISE CONTROL.",{52,1001,450,24},11,muted,juce::Justification::centredLeft);
     text(g,paused?"REELS PAUSED":"*   TRANSPORT RUNNING",{605,1003,236,20},9,paused?muted:amber,juce::Justification::centredRight);
     for(float x:{39.f,861.f}){screw(g,x,28,3);screw(g,x,1034,3);}
-    text(g,"REELGLUE AUDIO",{37,1049,250,15},8,muted,juce::Justification::centredLeft);text(g,"0.1  /  DEVELOPMENT EDITION",{601,1049,260,15},8,muted,juce::Justification::centredRight);
+    text(g,"ATR-102  /  TAPE MACHINE",{37,1049,250,15},8,muted,juce::Justification::centredLeft);text(g,"0.1  /  DEVELOPMENT EDITION",{601,1049,260,15},8,muted,juce::Justification::centredRight);
 }

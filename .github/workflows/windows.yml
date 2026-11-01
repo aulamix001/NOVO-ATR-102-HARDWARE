@@ -31,7 +31,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Expand-Archive pluginval.zip -DestinationPath pluginval
           $validator = (Resolve-Path "validator-build/bin/Release/validator.exe").Path
-          $plugin = (Resolve-Path "build/ReelGlue_artefacts/Release/VST3/ReelGlue.vst3").Path
+          $plugin = (Resolve-Path "build/ReelGlue_artefacts/Release/VST3/ATR-102.vst3").Path
           $pluginval = (Get-ChildItem pluginval -Recurse -Filter pluginval.exe | Select-Object -First 1).FullName
           & $validator $plugin
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
@@ -45,7 +45,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@v4
         with:
-          name: ReelGlue-Windows-x64-development
+          name: ATR-102-Windows-x64-development
           path: |
-            build/ReelGlue_artefacts/Release/VST3/ReelGlue.vst3
+            build/ReelGlue_artefacts/Release/VST3/ATR-102.vst3
             out/*.exe

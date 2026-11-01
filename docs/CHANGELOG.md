@@ -1,5 +1,12 @@
 # Changelog
 
+## Visual refinement — development
+
+- Renamed the visible product, host display name, bundle and installer to ATR-102.
+- Added machined knob skirts, individually lit grip flutes, domed faces and raised index markers.
+- Rebuilt switches with recessed sockets, molded keycaps, side walls and pressed-state travel.
+- Added smoked selector lenses, metallic trim and illuminated legends.
+
 ## 0.1.0 — development
 
 - Introduced the native ReelGlue VST3 and standalone application.

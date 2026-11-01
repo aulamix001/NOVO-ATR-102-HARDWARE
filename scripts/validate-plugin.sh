@@ -26,4 +26,4 @@ export DISPLAY=":$(cat "$REELGLUE_X11_DIR/display")"
 "$REELGLUE_PLUGINVAL" --strictness-level 5 --random-seed 42 \
     --sample-rates 44100,48000,96000,192000 --block-sizes 1,17,64,512,8192 \
     --vst3validator "$PWD/scripts/vst3-validator.sh" --output-dir "$PWD/out/validation" \
-    --validate "$PWD/build/ReelGlue_artefacts/Release/VST3/ReelGlue.vst3"
+    --validate "$PWD/build/ReelGlue_artefacts/Release/VST3/ATR-102.vst3"

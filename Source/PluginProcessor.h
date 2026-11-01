@@ -11,7 +11,7 @@ public:
     bool isBusesLayoutSupported(const BusesLayout&) const override;
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override {return true;}
-    const juce::String getName() const override {return "ReelGlue";}
+    const juce::String getName() const override {return "ATR-102";}
     bool acceptsMidi() const override {return false;}
     bool producesMidi() const override {return false;}
     double getTailLengthSeconds() const override {return 0.002;}

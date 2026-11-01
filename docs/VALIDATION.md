@@ -1,5 +1,13 @@
 # Validation record
 
+## ATR-102 visual refinement
+
+The renamed ATR-102 Release VST3 and Standalone were rebuilt and the Catch2 suite rerun successfully. Native closed/expanded/resized rendering and the existing audio/state/control integration checks passed. pluginval v1.0.4 strictness 5, including the official Steinberg validator, passed again on `ATR-102.vst3` across the complete sample-rate/block-size matrix below. The host scanner reports **ATR-102**.
+
+Current screenshots: [closed](screenshots/atr-102.png) and [expanded](screenshots/atr-102-expanded.png). Knobs now use individual grip flutes, domed faces, machined rings and raised markers; keys use recessed sockets, beveled molded caps and latch travel.
+
+## Baseline checks
+
 Validated in the managed Debian 13 x86-64 environment on 2026-11-01. These results apply to the Linux development build, not Windows binaries or the complete physical-model specification.
 
 | Check | Result |
