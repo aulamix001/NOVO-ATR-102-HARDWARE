@@ -4,6 +4,20 @@ A native, vector-drawn stereo tape plugin for VST3 hosts, with a standalone deve
 
 ![ATR-102 native hardware interface](docs/screenshots/atr-102.png)
 
+## Download packages
+
+The available Linux VST3 ZIP is a development build. Extract it and copy the complete `ATR-102.vst3` directory into `~/.vst3/`, then rescan plugins in your DAW. It cannot be loaded on Windows or macOS.
+
+The source ZIP includes `BUILD-WINDOWS.cmd`. On Windows, install Git, CMake 3.22+ and Visual Studio 2022 with the C++ desktop workload, MSVC v143 x64 and Windows SDK, then run that file. It builds and tests the plugin and creates `out/ATR-102-Windows-x64-VST3.zip`. This Windows helper has not been executed in the Linux cloud machine. The GitHub Actions workflow additionally runs both validators and builds an installer.
+
+To reproduce the Linux package after building:
+
+```sh
+python scripts/package-vst3.py --bundle build/ReelGlue_artefacts/Release/VST3/ATR-102.vst3 --platform linux-x64 --output out/ATR-102-0.1.0-Linux-x64-VST3.zip
+```
+
+The package checks binary architecture and module metadata, includes installation notes and license notices, verifies ZIP contents, and writes SHA-256 checksums. See `docs/DSP_NOTES.md` for the remaining audio-model work.
+
 ## Build
 
 Requirements: Git, CMake 3.22+, C++20, and Visual Studio 2022 on Windows. JUCE **8.0.15** and Catch2 **v3.5.4** are fetched from their official repositories. JUCE's licensing terms apply to distribution.

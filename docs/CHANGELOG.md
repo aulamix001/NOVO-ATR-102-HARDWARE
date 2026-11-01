@@ -1,5 +1,11 @@
 # Changelog
 
+## Download packaging — development
+
+- Added architecture-checked VST3 ZIP packaging with installation notes, build metadata, license notices and SHA-256 manifests.
+- Added a Windows build helper and Windows CI ZIP artifact generation.
+- Windows builds remain unexecuted in the Linux cloud instance.
+
 ## Visual refinement — development
 
 - Renamed the visible product, host display name, bundle and installer to ATR-102.
